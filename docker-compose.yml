@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  proxy:
+    image: 'nginx'
+    volumes:
+      - './proxy/nginx.conf:/etc/nginx/nginx.conf:ro'
+    ports:
+      - '8080:80'
+    links:
+      - backend
+      - frontend
+  backend:
+    build: './backend'
+  frontend:
+    build: './frontend'
